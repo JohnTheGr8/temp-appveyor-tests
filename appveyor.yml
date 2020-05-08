@@ -9,22 +9,20 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 dotnet_csproj:
-  patch: true
-  file: 'Flow.*\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
-  assembly_version: '{version}'
-  file_version: '{version}'
-  informational_version: '{version}'
-
-dotnet_csproj:
-  patch: true
-  file: 'Flow.Launcher.Plugin\Flow.Launcher.Plugin.csproj'
-  version: $(pluginVersion)
-  package_version: $(pluginVersion)
-  assembly_version: $(pluginVersion)
-  file_version: $(pluginVersion)
-  informational_version: $(pluginVersion)
+  - patch: true
+    file: 'Flow.*\*.csproj'
+    version: '{version}'
+    package_version: '{version}'
+    assembly_version: '{version}'
+    file_version: '{version}'
+    informational_version: '{version}'
+  - patch: true
+    file: 'Flow.Launcher.Plugin\Flow.Launcher.Plugin.csproj'
+    version: $(pluginVersion)
+    package_version: $(pluginVersion)
+    assembly_version: $(pluginVersion)
+    file_version: $(pluginVersion)
+    informational_version: $(pluginVersion)
 
 skip_commits:
   files:
