@@ -1,0 +1,33 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+configuration: Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: SolutionAssemblyInfo.cs
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+dotnet_csproj:
+  patch: true
+  file: 'Flow.*\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+skip_commits:
+  files:
+    - '*.md'
+before_build:
+- ps: nuget restore
+build:
+  project: Flow.Launcher.sln
+  verbosity: minimal
+after_test:
+artifacts:
+- path: 'Output\Packages\*'
+- path: 'Output\Release\Flow.Launcher.Plugin.*.nupkg'
+  name: Plugin nupkg
+- path: 'Output\Release\Flow.Launcher.Plugin.*.snupkg'
+  name: Plugin snupkg
