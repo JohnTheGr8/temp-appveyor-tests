@@ -26,11 +26,11 @@ assembly_info:
 dotnet_csproj:
   patch: true
   file: 'Flow.*\*.csproj'
-  version: $(nugetVersion)
+  version: $(launcherVersion)
   package_version: $(nugetVersion)
-  assembly_version: $(nugetVersion)
-  file_version: $(nugetVersion)
-  informational_version: $(nugetVersion)
+  assembly_version: $(launcherVersion)
+  file_version: $(launcherVersion)
+  informational_version: $(launcherVersion)
 
 skip_commits:
   files:
