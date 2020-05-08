@@ -10,8 +10,8 @@ init:
     $commitHash       = "$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
 
     $env:buildVersion = "$env:launcherVersion.$env:APPVEYOR_BUILD_NUMBER"
-    
-    $env:nugetVersion = "$env:launcherVersion-beta-$env:APPVEYOR_BUILD_NUMBER"
+
+    $env:nugetVersion = "$env:launcherVersion-beta.$env:APPVEYOR_BUILD_NUMBER"
     
     Update-AppveyorBuild -Version $env:buildVersion
 
@@ -25,7 +25,7 @@ dotnet_csproj:
   patch: true
   file: 'Flow.*\*.csproj'
   version: '{version}'
-  package_version: '{version}'
+  package_version: $(nugetVersion)
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
