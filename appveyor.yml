@@ -8,11 +8,14 @@ init:
 
     $commitHash       = "$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
 
-    $env:buildVersion = "$env:launcherVersion-$commitHash"
+    $env:buildVersion = "$env:launcherVersion-build.$env:APPVEYOR_BUILD_NUMBER"
 
     $env:nugetVersion = "$env:launcherVersion-beta.$env:APPVEYOR_BUILD_NUMBER"
     
     Update-AppveyorBuild -Version $env:buildVersion
+
+pull_requests:
+  do_not_increment_build_number: true
 
 assembly_info:
   patch: true
