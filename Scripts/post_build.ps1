@@ -129,7 +129,7 @@ function Main {
         Pack-Squirrel-Installer $p $v $o
 
         if ($env:APPVEYOR) {
-            Zip-Release $p $v $o
+            Zip-Release $p $env:buildVersion $o
         }
 
         Write-Host "List output directory"
