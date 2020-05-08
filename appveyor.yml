@@ -1,7 +1,7 @@
 version: 1.0.{build}
-image: Visual Studio 2019
-configuration: Release
-platform: Any CPU
+environment:
+  launcherVersion: 1.0.0
+  pluginVersion: 1.2.3
 assembly_info:
   patch: true
   file: SolutionAssemblyInfo.cs
@@ -16,15 +16,29 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
+
+dotnet_csproj:
+  patch: true
+  file: 'Flow.Launcher.Plugin\Flow.Launcher.Plugin.csproj'
+  version: $(pluginVersion)
+  package_version: $(pluginVersion)
+  assembly_version: $(pluginVersion)
+  file_version: $(pluginVersion)
+  informational_version: $(pluginVersion)
+
 skip_commits:
   files:
     - '*.md'
 before_build:
 - ps: nuget restore
+
+image: Visual Studio 2019
+configuration: Release
+platform: Any CPU
 build:
   project: Flow.Launcher.sln
   verbosity: minimal
-after_test:
+
 artifacts:
 - path: 'Output\Packages\*'
 - path: 'Output\Release\Flow.Launcher.Plugin.*.nupkg'
