@@ -5,11 +5,12 @@ environment:
 
 init:
 - ps: >-
-  $commitHash       = "$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
-  $env:buildVersion = "$env:launcherVersion.$env:APPVEYOR_BUILD_NUMBER"
-  $env:nugetVersion = "$env:launcherVersion-beta-$env:APPVEYOR_BUILD_NUMBER"
-  
-  Update-AppveyorBuild -Version $env:buildVersion
+    Get-ChildItem env:^C
+    $commitHash       = "$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
+    $env:buildVersion = "$env:launcherVersion.$env:APPVEYOR_BUILD_NUMBER"
+    $env:nugetVersion = "$env:launcherVersion-beta-$env:APPVEYOR_BUILD_NUMBER"
+    
+    Update-AppveyorBuild -Version $env:buildVersion
 
 assembly_info:
   patch: true
