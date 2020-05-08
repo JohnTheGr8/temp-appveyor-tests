@@ -1,6 +1,6 @@
-version: 1.0.{build}
+version: {build}
 environment:
-  launcherVersion: 1.0.0
+  launcherVersion: 3.2.1
   pluginVersion: 1.2.3
 
 init:
@@ -41,7 +41,7 @@ configuration: Release
 platform: Any CPU
 build:
   project: Flow.Launcher.sln
-  verbosity: minimal
+  verbosity: quiet
 
 artifacts:
 - path: 'Output\Packages\*'
