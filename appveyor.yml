@@ -46,9 +46,9 @@ build:
   verbosity: quiet
 
 artifacts:
-- path: 'Output\Packages\Flow-Launcher-*.exe'
+- path: 'Output\Packages\*.exe'
   name: Setup File
-- path: 'Output\Packages\Flow-Launcher-*.nupkg'
+- path: 'Output\Packages\*.nupkg'
   name: Squirrel nupkg
 - path: 'Output\Packages\RELEASES'
   name: Squirrel RELEASES
