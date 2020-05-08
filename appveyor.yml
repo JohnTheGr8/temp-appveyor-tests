@@ -1,4 +1,4 @@
-version: $(commitHash)
+version: '{build}'
 environment:
   launcherVersion: 3.2.1
 
@@ -17,27 +17,27 @@ init:
 assembly_info:
   patch: true
   file: SolutionAssemblyInfo.cs
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+  assembly_version: $(launcherVersion)
+  assembly_file_version: $(launcherVersion)
+  assembly_informational_version: $(launcherVersion)
 dotnet_csproj:
   patch: true
   file: 'Flow.*\*.csproj'
-  version: '{version}'
+  version: $(nugetVersion)
   package_version: $(nugetVersion)
-  assembly_version: '{version}'
-  file_version: '{version}'
-  informational_version: '{version}'
+  assembly_version: $(nugetVersion)
+  file_version: $(nugetVersion)
+  informational_version: $(nugetVersion)
 
 skip_commits:
   files:
     - '*.md'
-before_build:
-- ps: nuget restore
 
 image: Visual Studio 2019
 configuration: Release
 platform: Any CPU
+before_build:
+- ps: nuget restore
 build:
   project: Flow.Launcher.sln
   verbosity: quiet
