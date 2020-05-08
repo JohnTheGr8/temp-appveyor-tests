@@ -1,18 +1,9 @@
-version: '{build}'
-environment:
-  launcherVersion: 3.2.1
+version: '3.2.1.{build}'
 
 init:
-- ps: >-
-    Get-ChildItem env:
-
-    $commitHash       = "$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
-
-    $env:buildVersion = "$env:launcherVersion-build.$env:APPVEYOR_BUILD_NUMBER"
-
-    $env:nugetVersion = "$env:launcherVersion-beta.$env:APPVEYOR_BUILD_NUMBER"
-    
-    Update-AppveyorBuild -Version $env:buildVersion
+- ps: |
+      $version = new-object System.Version $env:APPVEYOR_BUILD_VERSION
+      $env:flowVersion = "{0}.{1}.{2}" -f $version.Major, $version.Minor, $version.Build
 
 pull_requests:
   do_not_increment_build_number: true
@@ -20,17 +11,17 @@ pull_requests:
 assembly_info:
   patch: true
   file: SolutionAssemblyInfo.cs
-  assembly_version: $(launcherVersion)
-  assembly_file_version: $(launcherVersion)
-  assembly_informational_version: $(launcherVersion)
+  assembly_version: $(flowVersion)
+  assembly_file_version: $(flowVersion)
+  assembly_informational_version: $(flowVersion)
 dotnet_csproj:
   patch: true
   file: 'Flow.*\*.csproj'
-  version: $(launcherVersion)
-  package_version: $(nugetVersion)
-  assembly_version: $(launcherVersion)
-  file_version: $(launcherVersion)
-  informational_version: $(launcherVersion)
+  version: $(flowVersion)
+  package_version: $(flowVersion)
+  assembly_version: $(flowVersion)
+  file_version: $(flowVersion)
+  informational_version: $(flowVersion)
 
 skip_commits:
   files:
