@@ -43,10 +43,6 @@
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Compile Include="..\SolutionAssemblyInfo.cs" Link="Properties\SolutionAssemblyInfo.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

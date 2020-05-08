@@ -37,10 +37,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Compile Include="..\SolutionAssemblyInfo.cs" Link="Properties\SolutionAssemblyInfo.cs" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <ProjectReference Include="..\Flow.Launcher.Plugin\Flow.Launcher.Plugin.csproj">
       <Project>{8451ecdd-2ea4-4966-bb0a-7bbc40138e80}</Project>
       <Name>Flow.Launcher.Plugin</Name>
