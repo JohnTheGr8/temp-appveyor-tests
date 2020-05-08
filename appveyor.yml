@@ -9,7 +9,7 @@ init:
 
     $commitHash       = "$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
 
-    $env:buildVersion = "$env:launcherVersion.$env:APPVEYOR_BUILD_NUMBER"
+    $env:buildVersion = "$env:launcherVersion+$commitHash"
 
     $env:nugetVersion = "$env:launcherVersion-beta.$env:APPVEYOR_BUILD_NUMBER"
     
