@@ -1,7 +1,6 @@
-version: '{build}'
+version: $(commitHash)
 environment:
   launcherVersion: 3.2.1
-  pluginVersion: 1.2.3
 
 init:
 - ps: >-
